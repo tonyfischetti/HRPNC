@@ -1,6 +1,7 @@
 
 import Control.Monad
 import Data.Char
+import System.IO
 
 
 -- passes the appropriate arithmetic function to operate
@@ -46,5 +47,6 @@ dispatcher input = receiveFinalStack $ foldl reducer [] $ words input
 main :: IO ()
 main = forever $ do
         putStr "RPN: "
+        hFlush stdout
         input <- getLine
         print $ dispatcher input
